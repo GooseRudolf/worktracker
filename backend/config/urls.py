@@ -30,4 +30,5 @@ urlpatterns = [
     path('verify-email/<str:uid>/<str:token>/', VerifyEmailView.as_view()),
     path('reset-password/<str:uid>/<str:token>/', ResetPasswordView.as_view()),
     path('api/users/', include('users.urls')),
+    path('api/vacancies/', include('vacancies.urls')),
 ]

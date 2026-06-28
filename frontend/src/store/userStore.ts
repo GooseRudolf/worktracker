@@ -1,6 +1,5 @@
 import { create } from "zustand"
 import { uiStore } from "./uiStore"
-import { authStore } from "./authStore"
 import type { userData } from "@/types/userTypes"
 import { getApiError } from "@/api/getApiError"
 import { DEF_ERROR, userErrorMessages } from "@/types/errors"
@@ -24,10 +23,9 @@ export const userStore = create<userState>((set) => ({
 export async function getMe() {
     const { setIsFetching, setErrorMessage } = uiStore.getState()
     const { setUser } = userStore.getState()
-    const {access} = authStore.getState()
     setIsFetching(true)
     try {
-        const res = await userApi.getMe(access)
+        const res = await userApi.getMe()
         setUser({username:res.username, email:res.email})
     } catch (error: any) {
         setErrorMessage(getApiError(error, userErrorMessages, DEF_ERROR))
