@@ -69,12 +69,11 @@ export const vacancyApi = {
     },
 
     async getDashboard() {
-        // потом
         const response = await instance.get('/vacancies/dashboard')
         return response.data
     },
-    async searchVacancy(query: string) {
-    //    потом
-    },
-    
+    async searchVacancies(params?: { search?: string; status?: string }) {
+        const response = await instance.get('/vacancies', { params })
+        return response.data
+    }
 }
