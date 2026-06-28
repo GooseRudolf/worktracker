@@ -1,0 +1,27 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Django Home</title>
+    <link rel="stylesheet" href="{% static '/css/styleHome.css' %}">
+</head>
+<body>
+    <div class="top">
+        <div class="top__left">
+            <a href="/admin/" class="btn">Admin Panel</a>
+            <a href="/api/docs/" class="btn">Docs</a>
+        </div>
+        <div class="top__right">
+            <a href="/api/schema/" class="btn">Download Schema</a>
+        </div>
+    </div>
+    <h1>Endpoints</h1>
+    <ul>
+        {% for url in urls %}
+        <li><a href="/{{ url }}">{{ url }}</a></li>
+        {% endfor %}
+    </ul>
+</body>
+</html>

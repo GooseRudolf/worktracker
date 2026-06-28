@@ -1,0 +1,137 @@
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+:root {
+  --black-color: #000;
+  --white-color: #fff;
+  --border-color: #ccc;
+}
+
+input {
+  width: 100%;
+  padding: 10px 12px;
+  border: 1px solid var(--border-color);
+  border-radius: 6px;
+  font-size: 14px;
+}
+
+h1{
+  text-align: center;
+}
+.authentication {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  min-width: 300px;
+}
+
+.form_btn {
+  margin-top: 20px;
+  padding: 10px;
+  border: none;
+  border-radius: 6px;
+  background: var(--black-color);
+  color: var(--white-color);
+  font-size: 16px;
+  cursor: pointer;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+}
+
+.form_btn:disabled {
+  cursor: not-allowed;
+  background-color: #666;
+}
+
+.EmailConfirm__img {
+  background-color: var(--black-color);
+  color: var(--white-color);
+  width: 70px;
+  padding: 15px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 20px;
+}
+
+.EmailConfirm__title {
+  font-size: 25px;
+  font-weight: bold;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.EmailConfirm__text {
+  text-align: center;
+  font-size: 16px;
+}
+
+.form__field {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.form__label_forgotPass {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+}
+
+.form__label_forgotPass span {
+  color: red;
+  font-size: 12px;
+}
+
+.password-wrapper {
+  position: relative;
+  width: 100%;
+}
+
+.password-wrapper input {
+  width: 100%;
+  padding-right: 40px;
+  /* место под глаз */
+}
+
+.toggle-eye {
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  cursor: pointer;
+  width: 22px;
+  height: 22px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #555;
+}
+
+.toggle-eye svg {
+  width: 100%;
+  height: 100%;
+}
+
+.eye-open {
+  display: none;
+}
+
+.toggle-eye.active .eye-open {
+  display: block;
+}
+
+.toggle-eye.active .eye-closed {
+  display: none;
+}

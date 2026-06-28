@@ -1,0 +1,125 @@
+.authentication{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+}
+.login {
+    &__title {
+        text-align: center;
+        margin-bottom: 20px;
+        font-size: 30px;
+        font-weight: 600;
+    }
+}
+
+.form {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    min-width: 50%;
+    &__field {
+        display: flex;
+        flex-direction: column;
+        gap: 6px;
+        font-size: 16px;
+    }
+    &__label {
+        &_forgotPass {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-end;
+            a {   
+                color: #666;
+            }
+            span{
+                color: red;
+                font-size: 12px;
+            }
+        }
+    }
+
+    &_btn {
+        padding: 10px;
+        border: none;
+        border-radius: 6px;
+        background: var(--black-color);
+        color: var(--white-color);
+        font-size: 16px;
+        cursor: pointer;
+        &:disabled{
+            cursor:not-allowed ;
+            background-color: #666;
+        }
+    }
+    &__link{
+        display: flex;
+        justify-content: center;
+        gap: 5px;
+    }
+    a {
+        color: #666;
+        &:hover { text-decoration: underline; }
+    }
+}
+
+.passfield {
+    position: relative;
+    width: 100%;
+
+    &__input {
+        width: 100%;
+    }
+
+    &__img {
+        cursor: pointer;
+        position: absolute;
+        top: 0;
+        right: 0;
+        height: 100%;
+        img{
+        color: var(--black-color);
+        }
+        padding: 3px 10px;
+    }
+}
+
+.EmailConfirm{
+    
+    &__form{
+        align-items: stretch;
+    }
+    &__img{
+        background-color: var(--black-color);
+        color: var(--white-color);
+        width: 70px;
+        padding: 15px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin: 0 auto;
+        margin-bottom: 20px;
+    }
+    &__title{
+        font-size: 25px;
+        font-weight: bold;
+        margin-bottom: 20px;
+        text-align: center;
+    }
+    &__text{
+        text-align: center;
+        margin: 0 auto;
+        width: 60%;
+    }
+    &__email{
+        margin-top: 10px;
+        a{
+            cursor: pointer;
+            font-size: 20px;
+            color: rgb(0, 68, 255);
+            margin-left: 10px;
+        }
+    }
+}
