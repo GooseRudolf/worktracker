@@ -4,13 +4,18 @@ import { router } from "@/routers/index"
 import { ErrorPanel } from "@/components/Error/ErrorPanel";
 import { Loader } from "@/components/Loader/Loader";
 import { uiStore } from "@/store/uiStore";
+import { getMe } from "./store/userStore";
 
 export const App = () => {
     const isFetching = uiStore((state) => state.isFetching);
     const errorMessage = uiStore((state) => state.errorMessage);
     const cleanError = uiStore((state) => state.setErrorMessage);
     useEffect(() => {
-        // getMe()
+        const fetchMe = async () => {
+            const me = await getMe()
+            console.log(me)
+        }
+        fetchMe()
     }, [])
     return (
         <div className="">

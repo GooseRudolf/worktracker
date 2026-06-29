@@ -5,9 +5,8 @@ export function getApiError(error: unknown, dict: Record<string, string>, defaul
         return defaultMessage
 
     const apiError = error.response?.data?.errors?.[0]
-
     if (!apiError)
         return defaultMessage
 
-    return dict[apiError.code] ?? apiError.message ?? defaultMessage
+    return dict[apiError.code] ?? apiError.message.detail ?? defaultMessage
 }

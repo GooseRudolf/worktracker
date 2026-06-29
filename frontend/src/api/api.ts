@@ -1,20 +1,6 @@
-import axios from 'axios'
+import instance from './apiConfig'
 import type { userLoginType, userRegisterType } from '@/types/userTypes'
 import type { vacancyType } from '@/types/vacancyTypes'
-import { authStore } from '@/store/authStore'
-
-const instance = axios.create({
-    baseURL: 'http://127.0.0.1:8000/api'
-    //withCredentials:true
-})
-instance.interceptors.request.use((config) => {
-    const token = authStore.getState().access
-    if (token) {
-        config.headers = config.headers ?? {}
-        config.headers.Authorization = `Bearer ${token}`
-    }
-    return config
-})
 
 export const authApi = {
     async registerUser(body: userRegisterType) {

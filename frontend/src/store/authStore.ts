@@ -60,19 +60,26 @@ export async function loginUser(body: userLoginType) {
   finally { setIsFetching(false) }
 }
 
+export function clearAuth() {
+  const { setAccess, setRefresh, setIsAuth } = authStore.getState()
+  setAccess("")
+  setRefresh("")
+  setIsAuth(false)
+}
+
 export async function logoutUser() {
   const { setIsFetching, setErrorMessage } = uiStore.getState()
-  const { setAccess, setRefresh, setIsAuth, refresh } = authStore.getState()
+  const { refresh } = authStore.getState()
   setIsFetching(true)
   try {
     await authApi.logOut({ 'refresh': refresh })
-    setAccess("")
-    setRefresh("")
-    setIsAuth(false)
   } catch (error: unknown) {
     setErrorMessage(getApiError(error, authErrorMessages, DEF_ERROR))
   }
-  finally { setIsFetching(false) }
+  finally { 
+    clearAuth()
+    setIsFetching(false) 
+  }
 }
 
 export async function resetPassword(email: string) {
@@ -90,14 +97,7 @@ export async function resetPassword(email: string) {
 
 export async function refreshToken() {
   const { refresh, setAccess, setRefresh } = authStore.getState()
-  const { setErrorMessage } = uiStore.getState()
-  try {
-    const data = await authApi.refreshToken(refresh)
-    setAccess(data.acces)
-    setRefresh(data.refresh)
-    return data.acces
-  } catch (error: unknown) {
-    setErrorMessage(getApiError(error, authErrorMessages, DEF_ERROR))
-  }
-  return null
+  const data = await authApi.refreshToken(refresh)
+  setAccess(data.access)
+  setRefresh(data.refresh)
 }

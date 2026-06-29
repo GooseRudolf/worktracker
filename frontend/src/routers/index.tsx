@@ -3,9 +3,10 @@ import { GuestRoute } from "./guest.route"
 import { ProtectedRoute } from "./protected.route"
 import { AuthLayout } from "@/layouts/AuthLayout"
 import { MainLayout } from "@/layouts/MainLayout"
-import { Profile } from "@/pages/Profile/Profile"
 import { LoginForm, FogotPassword } from "@/pages/Auth/Login"
 import { EmailConfirm, RegistrationForm } from "@/pages/Auth/Registration"
+import { Dashboard } from "@/pages/Dashboard/Dashboard"
+import { Leads } from "@/pages/Leads/Leads"
 
 
 export const router = createBrowserRouter([
@@ -29,8 +30,9 @@ export const router = createBrowserRouter([
             {
                 element: <MainLayout />,
                 children: [
-                    { index: true, element: <Navigate to="/profile" replace /> },
-                    { path: "/profile", element: <Profile/> },
+                    { index: true, element: <Navigate to="/dashboard" replace /> },
+                    { path: "/dashboard", element: <Dashboard/> },
+                    { path: "/leads", element: <Leads/> },
                 ]
             }
         ]
