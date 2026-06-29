@@ -24,12 +24,13 @@ class VacancyViewSet(ModelViewSet):
     @action(detail=False, methods=["get"])
     def dashboard(self, request):
         qs = self.get_queryset()
-
-        data = qs.aggregate(
+        stats = qs.aggregate(
             total=Count("id"),
             active=Count("id", filter=Q(status="active")),
             interview=Count("id", filter=Q(status="interview")),
             offer=Count("id", filter=Q(status="offer")),
         )
-
-        return Response(data)
+        latest = qs.order_by("-updated_at")[:5]
+        return Response({ **stats,
+            "latest": self.get_serializer(latest, many=True).data
+        })

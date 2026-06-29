@@ -8,3 +8,7 @@ export const authErrorMessages = {
 export const userErrorMessages = {
     "USER_FETCH_ERROR":"Ошибка получения данных пользователя"
 }
+
+export const vacancyErrorMessages = {
+    "ERROR":"Ошибка получения данных дашборда"
+}

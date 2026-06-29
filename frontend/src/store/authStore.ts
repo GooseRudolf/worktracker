@@ -1,5 +1,5 @@
 import { create } from "zustand"
-import { authApi } from "@/api/api"
+import { authApi } from "@/api/apiUser"
 import { uiStore } from "@/store/uiStore"
 import { userStore } from "@/store/userStore"
 import { authErrorMessages, DEF_ERROR } from "@/types/errors"
@@ -29,7 +29,7 @@ export const authStore = create<AuthState>((set) => ({
 }))
 
 
-export async function registerUser(body: userRegisterType) {
+export const registerUser = async(body: userRegisterType) => {
   const { setIsFetching, setErrorMessage } = uiStore.getState()
   const { setEmail } = authStore.getState()
   setIsFetching(true)
@@ -43,7 +43,7 @@ export async function registerUser(body: userRegisterType) {
 
 }
 
-export async function loginUser(body: userLoginType) {
+export const loginUser = async(body: userLoginType) => {
   const { setIsFetching, setErrorMessage } = uiStore.getState()
   const { setAccess, setRefresh, setIsAuth } = authStore.getState()
   const { setUserId } = userStore.getState()
@@ -60,14 +60,14 @@ export async function loginUser(body: userLoginType) {
   finally { setIsFetching(false) }
 }
 
-export function clearAuth() {
+export const clearAuth = () => {
   const { setAccess, setRefresh, setIsAuth } = authStore.getState()
   setAccess("")
   setRefresh("")
   setIsAuth(false)
 }
 
-export async function logoutUser() {
+export const logoutUser = async() => {
   const { setIsFetching, setErrorMessage } = uiStore.getState()
   const { refresh } = authStore.getState()
   setIsFetching(true)
@@ -82,7 +82,7 @@ export async function logoutUser() {
   }
 }
 
-export async function resetPassword(email: string) {
+export const resetPassword = async(email: string) => {
   const { setIsFetching, setErrorMessage } = uiStore.getState()
   const { setEmail } = authStore.getState()
   setIsFetching(true)
@@ -95,7 +95,7 @@ export async function resetPassword(email: string) {
   finally { setIsFetching(false) }
 }
 
-export async function refreshToken() {
+export const refreshToken = async() =>{
   const { refresh, setAccess, setRefresh } = authStore.getState()
   const data = await authApi.refreshToken(refresh)
   setAccess(data.access)

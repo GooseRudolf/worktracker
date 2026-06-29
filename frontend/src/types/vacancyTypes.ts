@@ -7,3 +7,7 @@ export type VacancyStatus =
 export type vacancyType = { id?: number; user?: number; company: string; position: string; 
     status: VacancyStatus; salary?: number | null; url?: string; applied_at?: string | null; 
     notes?: string; created_at?: string; updated_at?: string }
+
+// dashboard
+export type DashboardStats = { total: number; active: number; interview: number; offer: number, latest:vacancyType[];} 
+export const dashboardInit: DashboardStats = { total: 0, active: 0, interview: 0, offer: 0, latest:[] }

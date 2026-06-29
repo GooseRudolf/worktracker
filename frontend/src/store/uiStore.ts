@@ -9,11 +9,11 @@ interface uiType {
 }
 
 export const uiStore = create<uiType>()(
-        (set) => ({
-            isFetching:false,
-            errorMessage:"",
+    (set) => ({
+        isFetching: false,
+        errorMessage: "",
 
-            setIsFetching: (isFetching) => set({ isFetching: isFetching }),
-            setErrorMessage:(errorMessage)=>set({errorMessage:errorMessage})
-        })
+        setIsFetching: (isFetching) => set({ isFetching: isFetching }),
+        setErrorMessage: (errorMessage) => set({ errorMessage: errorMessage })
+    })
 )

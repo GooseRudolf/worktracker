@@ -3,14 +3,14 @@ import { uiStore } from "./uiStore"
 import type { userData } from "@/types/userTypes"
 import { getApiError } from "@/api/getApiError"
 import { DEF_ERROR, userErrorMessages } from "@/types/errors"
-import { userApi } from "@/api/api"
+import { userApi } from "@/api/apiUser"
 
 
 type userState = {
   user_id:string
   user:userData
   setUserId:(id:string)=>void
-  setUser: (user: userData) => void;
+  setUser: (user: userData) => void
 }
 
 export const userStore = create<userState>((set) => ({
@@ -20,7 +20,7 @@ export const userStore = create<userState>((set) => ({
     setUser: (user) => set({ user: user }),
 }))
 
-export async function getMe() {
+export const getMe = async() => {
     const { setIsFetching, setErrorMessage } = uiStore.getState()
     const { setUser } = userStore.getState()
     setIsFetching(true)
