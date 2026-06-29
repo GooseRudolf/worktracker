@@ -7,6 +7,7 @@ import { LoginForm, FogotPassword } from "@/pages/Auth/Login"
 import { EmailConfirm, RegistrationForm } from "@/pages/Auth/Registration"
 import { Dashboard } from "@/pages/Dashboard/Dashboard"
 import { Leads } from "@/pages/Leads/Leads"
+import {LeadForm} from "@/pages/LeadForm/LeadForm"
 
 
 export const router = createBrowserRouter([
@@ -33,6 +34,7 @@ export const router = createBrowserRouter([
                     { index: true, element: <Navigate to="/dashboard" replace /> },
                     { path: "/dashboard", element: <Dashboard/> },
                     { path: "/leads", element: <Leads/> },
+                    { path: "/leadform", element: <LeadForm/> },
                 ]
             }
         ]

@@ -1,7 +1,8 @@
 import { useEffect, useState } from "react"
 import st from "./Dashboard.module.scss"
-import { getDasgboard } from "@/store/vacanciesStore"
+import { getDasgboard, vacanciesStore } from "@/store/vacanciesStore"
 import { dashboardInit, type DashboardStats, type vacancyType } from "@/types/vacancyTypes"
+import { useNavigate } from "react-router-dom"
 
 export const Dashboard = () => {
     const [boardData, setBoardData] = useState<DashboardStats>(dashboardInit)
@@ -13,6 +14,12 @@ export const Dashboard = () => {
         }
         void initDashboard()
     }, [])
+    const navigate = useNavigate()
+    const setVacancieId = vacanciesStore((state) => state.setcurrentVacancieId)
+    const redirectToForm = (id:number|null)=>{
+        setVacancieId(id)
+        navigate("/leadform")
+    }
     return (
         <div className={st.dashboard}>
             <h2>Dashboard</h2>
@@ -26,7 +33,7 @@ export const Dashboard = () => {
                 <div className="">Последние 5 записей</div>
                 <div className="">
                     {boardData.latest&&boardData.latest.map((elem: vacancyType) => (
-                        <div key={elem.id}>
+                        <div key={elem.id} onClick={()=>redirectToForm(elem.id ?? null)}>
                             {elem.company} ({elem.position})
                         </div>
                     ))}

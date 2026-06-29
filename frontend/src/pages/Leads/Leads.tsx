@@ -1,7 +1,8 @@
 import { Pagination } from "@/components/Pagination/Pagination"
-import { getVacancies, searchVacancies } from "@/store/vacanciesStore"
+import { getVacancies, searchVacancies, vacanciesStore } from "@/store/vacanciesStore"
 import type { vacancyType } from "@/types/vacancyTypes"
 import { useEffect, useState } from "react"
+import { useNavigate } from "react-router-dom"
 
 export const Leads = () => {
     const [searchInp, setsearchInp] = useState<string>("")
@@ -9,6 +10,9 @@ export const Leads = () => {
     const [page, setPage] = useState<number>(1)
     const [totalPage, setTotalPage] = useState<number>(1)
     const [vacanciesList, setVacanciesList] = useState<vacancyType[]>([])
+
+    const navigate = useNavigate()
+    const setVacancieId = vacanciesStore((state) => state.setcurrentVacancieId)
     useEffect(() => {
         const initLeads = async () => {
             const res = await getVacancies(page)
@@ -28,6 +32,10 @@ export const Leads = () => {
         }
         void sortBySearch()
     }, [searchInp, searchStatus])
+    const redirectToForm = (id:number|null)=>{
+        setVacancieId(id)
+        navigate("/leadform")
+    }
     return (
         <div className="">
             <h2>Leads</h2>
@@ -42,11 +50,11 @@ export const Leads = () => {
                     <option value="offer">offer</option>
                     <option value="rejected">rejected</option>
                 </select>
-                <button>Add vacantion</button>
+                <button onClick={()=>redirectToForm(null)}>Add vacantion</button>
             </div>
             <div className="">
                 {vacanciesList && vacanciesList.map((elem: vacancyType) => (
-                    <div key={elem.id}>
+                    <div key={elem.id} onClick={()=>redirectToForm(elem.id ?? null)}>
                         {elem.company} ({elem.position})
                     </div>
                 ))}

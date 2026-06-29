@@ -16,7 +16,7 @@ export const vacancyApi = {
         return response.data
     },
     async changeVacancy(id:number, body:vacancyType) {
-        const response = await instance.patch(`/vacancies/${id}/`, body)
+        const response = await instance.put(`/vacancies/${id}/`, body)
         return response.data
     },
     async deleteVacancy(id: number) {

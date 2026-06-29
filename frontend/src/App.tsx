@@ -8,9 +8,9 @@ import { getMe } from "./store/userStore";
 import { authStore } from "./store/authStore";
 
 export const App = () => {
-    const isFetching = uiStore((state) => state.isFetching);
-    const errorMessage = uiStore((state) => state.errorMessage);
-    const cleanError = uiStore((state) => state.setErrorMessage);
+    const isFetching = uiStore((state) => state.isFetching)
+    const errorMessage = uiStore((state) => state.errorMessage)
+    const cleanError = uiStore((state) => state.setErrorMessage)
     const isAuth = authStore((state)=>state.isAuth)
     useEffect(() => {
         async function bootstrapAuth() { if (isAuth) await getMe()  }
