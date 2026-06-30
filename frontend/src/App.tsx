@@ -17,7 +17,7 @@ export const App = () => {
         void bootstrapAuth()
     }, [isAuth])
     return (
-        <div className="">
+        <div className="wrapper">
             <ErrorPanel msg={errorMessage} cleanError={cleanError} type={0} />
             {isFetching && <Loader />}
             <RouterProvider router={router} />
