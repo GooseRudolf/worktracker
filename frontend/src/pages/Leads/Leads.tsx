@@ -3,6 +3,7 @@ import { getVacancies, searchVacancies, vacanciesStore } from "@/store/vacancies
 import type { vacancyType } from "@/types/vacancyTypes"
 import { useEffect, useState } from "react"
 import { useNavigate } from "react-router-dom"
+import st from './Leads.module.scss'
 
 export const Leads = () => {
     const [searchInp, setsearchInp] = useState<string>("")
@@ -37,9 +38,9 @@ export const Leads = () => {
         navigate("/leadform")
     }
     return (
-        <div className="">
-            <h2>Leads</h2>
-            <div className="">
+        <div className={st.listLeads}>
+            <h2 className={st.listLeads__title}>Leads</h2>
+            <div className={st.listLeads__instruments}>
                 <input type="text" placeholder="search" value={searchInp}
                     onChange={(e) => setsearchInp(e.target.value)} />
                 <select value={searchStatus} onChange={(e) => setsearchStatus(e.target.value)}>
@@ -52,9 +53,10 @@ export const Leads = () => {
                 </select>
                 <button onClick={()=>redirectToForm(null)}>Add vacantion</button>
             </div>
-            <div className="">
+            <div className={st.listLeads__items}>
                 {vacanciesList && vacanciesList.map((elem: vacancyType) => (
-                    <div key={elem.id} onClick={()=>redirectToForm(elem.id ?? null)}>
+                    <div key={elem.id} className={st.listLeads__item}
+                    onClick={()=>redirectToForm(elem.id ?? null)}>
                         {elem.company} ({elem.position})
                     </div>
                 ))}

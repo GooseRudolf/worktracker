@@ -18,14 +18,16 @@ export const Pagination = ({ page, total, onChange }: Props) => {
 
     return (
         <div className={st.pagination}>
-            <button disabled={page === 1} onClick={() => onChange(page - 1)}> ◀ </button>
+            <button disabled={page === 1} className={st.pagination__btn}
+            onClick={() => onChange(page - 1)}> ◀ </button>
             {pages.map(p => (
                 <button key={p} onClick={() => onChange(p)} 
-                    className={p === page ? st.active : "" }>
+                    className={`${st.pagination__btn} ${p === page ? st.active : ""}` }>
                     {p}
                 </button>
             ))}
-            <button disabled={page === total} onClick={() => onChange(page + 1)}> ▶ </button>
+            <button disabled={page === total} className={st.pagination__btn}
+            onClick={() => onChange(page + 1)}> ▶ </button>
         </div>
     )
 }

@@ -22,18 +22,19 @@ export const Dashboard = () => {
     }
     return (
         <div className={st.dashboard}>
-            <h2>Dashboard</h2>
-            <div className="cards">
-                <div className="">Всего: {boardData.total}</div>
-                <div className="">Интервью: {boardData.interview}</div>
-                <div className="">Офферы: {boardData.offer}</div>
-                <div className="">Активно: {boardData.active}</div>
+            <h2 className={st.dashboard__title}>Dashboard</h2>
+            <div className={st.dashboard__cards}>
+                <div className={st.dashboard__card}>Всего: {boardData.total}</div>
+                <div className={st.dashboard__card}>Интервью: {boardData.interview}</div>
+                <div className={st.dashboard__card}>Офферы: {boardData.offer}</div>
+                <div className={st.dashboard__card}>Активно: {boardData.active}</div>
             </div>
-            <div className="last">
-                <div className="">Последние 5 записей</div>
-                <div className="">
+            <div className={st.topList}>
+                <div className={st.topList__title}>Последние 5 записей</div>
+                <div className={st.topList__items}>
                     {boardData.latest&&boardData.latest.map((elem: vacancyType) => (
-                        <div key={elem.id} onClick={()=>redirectToForm(elem.id ?? null)}>
+                        <div key={elem.id} className={st.topList__item}
+                            onClick={()=>redirectToForm(elem.id ?? null)}>
                             {elem.company} ({elem.position})
                         </div>
                     ))}

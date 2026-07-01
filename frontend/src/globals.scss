@@ -47,6 +47,12 @@ input{
   padding: 7px 15px;
   font-size: 18px;
 }
+a{
+  text-decoration: none;
+}
+li{
+  list-style: none;
+}
 input:-webkit-autofill {
   -webkit-text-fill-color: var(--black_color);;
   -webkit-box-shadow: 0 0 0 1000px var(--white_color) inset;
@@ -55,5 +61,14 @@ input:-webkit-autofill {
   min-height: 100vh;
   display: flex;
   flex-direction: column;
-  justify-content: center;
+}
+.content{
+  flex-grow: 1;
+  display: flex;
+  &__main{
+    flex:1;
+  }
+}
+.container{
+  margin: 0px 50px;
 }

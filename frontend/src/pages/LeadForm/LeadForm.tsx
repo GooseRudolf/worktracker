@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react"
 import { addVacancy, changeVacancy, deleteVacancy, getVacancyData, vacanciesStore } from "@/store/vacanciesStore"
 import { vacancyInit, type vacancyType } from "@/types/vacancyTypes"
+import st from './LeadForm.module.scss'
 
 export const LeadForm = () => {
     const [form, setForm] = useState<vacancyType>(vacancyInit)
@@ -30,18 +31,16 @@ export const LeadForm = () => {
         if (vacancieId) deleteVacancy(vacancieId)
     }
     return (
-        <div>
-            <div>
+        <div className={st.leadForm}>
+            <div className={st.leadForm__fielf}>
                 <label htmlFor="company">Company</label>
                 <input id="company" name="company" value={form.company} onChange={onChange} />
             </div>
-
-            <div>
+            <div className={st.leadForm__fielf}>
                 <label htmlFor="position">Position</label>
                 <input id="position" name="position" value={form.position} onChange={onChange} />
             </div>
-
-            <div>
+            <div className={st.leadForm__fielf}>
                 <label htmlFor="status">Status</label>
                 <select id="status" name="status" value={form.status} onChange={onChange}>
                     <option value="saved">saved</option>
@@ -51,17 +50,14 @@ export const LeadForm = () => {
                     <option value="rejected">rejected</option>
                 </select>
             </div>
-
-            <div>
+            <div className={st.leadForm__fielf}>
                 <label htmlFor="salary">Salary</label>
                 <input id="salary" name="salary" value={form.salary ?? ""} onChange={onChange} />
             </div>
-
-            <div>
+            <div className={st.leadForm__fielf}>
                 <label htmlFor="url">URL</label>
                 <input id="url" name="url" value={form.url ?? ""} onChange={onChange} />
             </div>
-
             <div>
                 <label htmlFor="notes">Notes</label>
                 <textarea id="notes" name="notes" value={form.notes ?? ""} onChange={onChange} />
@@ -69,12 +65,15 @@ export const LeadForm = () => {
             
             {!isEmpty && (
                 <>
-                    <button onClick={changeLead}>save</button>
-                    <button onClick={deleteLead}>delete</button>
+                    <button className={st.leadForm__btn_save}
+                        onClick={changeLead}>save</button>
+                    <button className={st.leadForm__btn_delete}
+                    onClick={deleteLead}>delete</button>
                 </>
             )}
 
-            {isEmpty && <button onClick={addLead}>create</button>}
+            {isEmpty && <button className={st.leadForm__btn_create}
+            onClick={addLead}>create</button>}
         </div>
     )
 }
