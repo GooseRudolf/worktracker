@@ -39,19 +39,19 @@ export const Leads = () => {
     }
     return (
         <div className={st.listLeads}>
-            <h2 className={st.listLeads__title}>Leads</h2>
+            <h2 className={st.listLeads__title}>Вакансии</h2>
             <div className={st.listLeads__instruments}>
-                <input type="text" placeholder="search" value={searchInp}
+                <input type="text" placeholder="поиск по названию или должности" value={searchInp}
                     onChange={(e) => setsearchInp(e.target.value)} />
                 <select value={searchStatus} onChange={(e) => setsearchStatus(e.target.value)}>
-                    <option value="">All</option>
-                    <option value="saved">saved</option>
-                    <option value="applied">applied</option>
-                    <option value="interview">interview</option>
-                    <option value="offer">offer</option>
-                    <option value="rejected">rejected</option>
+                    <option value="">Все</option>
+                    <option value="saved">Сохранено</option>
+                    <option value="applied">Добавлено</option>
+                    <option value="interview">Интервью</option>
+                    <option value="offer">Оффер</option>
+                    <option value="rejected">Отказано</option>
                 </select>
-                <button onClick={()=>redirectToForm(null)}>Add vacantion</button>
+                <button onClick={()=>redirectToForm(null)}>Добавить вакансию</button>
             </div>
             <div className={st.listLeads__items}>
                 {vacanciesList && vacanciesList.map((elem: vacancyType) => (

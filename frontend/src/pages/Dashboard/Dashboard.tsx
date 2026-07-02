@@ -22,7 +22,7 @@ export const Dashboard = () => {
     }
     return (
         <div className={st.dashboard}>
-            <h2 className={st.dashboard__title}>Dashboard</h2>
+            <h2 className={st.dashboard__title}>Панель управления</h2>
             <div className={st.dashboard__cards}>
                 <div className={st.dashboard__card}>Всего: {boardData.total}</div>
                 <div className={st.dashboard__card}>Интервью: {boardData.interview}</div>

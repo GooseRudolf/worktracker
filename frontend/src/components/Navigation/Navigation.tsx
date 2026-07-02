@@ -15,14 +15,14 @@ export const Navigation = () => {
                 <nav className={st.menu}>
                     <ul className={st.menu__body}>
                         <li className={st.menu__item}>
-                            <NavLink to='dashboard'>Dashboard</NavLink>
+                            <NavLink to='dashboard'>Панель управления</NavLink>
                         </li>
                         <li className={st.menu__item}>
-                            <NavLink to='leads'>List of leads</NavLink>
+                            <NavLink to='leads'>Список вакансий</NavLink>
                         </li>
                     </ul>
                 </nav>
-                <button className={st.navigation__logout} onClick={logoutUser}>Logout</button>
+                <button className={st.navigation__logout} onClick={logoutUser}>Выход</button>
             </div>
         </aside>
     )
